@@ -91,8 +91,12 @@
       <p class="experiment-note"><strong>Limitation.</strong> The hairline and skin color still cause some strange effects, but at least grayscale removes some of the color mismatch. Still, it looks relatively more natural than the hybrid images in 2.2.</p>
     </details>
   </section>
+  <section id="part2-learning" class="study">
+    <div class="section-heading"><h2>What I Learned · Part 2</h2></div>
+    <p>I learned how frequency information can be used for sharpening, hybrid images, and multiresolution blending. Hybrid images mix low frequencies from one image with high frequencies from another, so what we see changes with viewing distance. Gaussian and Laplacian stacks let us blend both images at different scales using masks, then reconstruct the result. This showed me how blending across scales can make spatial transitions smoother while preserving details.</p>
+  </section>
   <section class="takeaway">
-    <div class="eyebrow">WHAT I LEARNED</div>
+    <div class="eyebrow">SUMMARY OF WHAT I LEARNED</div>
     <p>To blur or not to blur, that is the question - Ke Yang</p>
   </section>
   <p class="asset-credit">Sources: <a href="data/part2/sources.json">input images</a> · <a href="https://cal-cs180.github.io/fa24/hw/proj2/index.html">Berkeley course materials</a> · <a href="https://courses.grainger.illinois.edu/cs445/fa2023/projects/hybrid/ComputationalPhotography_ProjectHybrid.html">Derek/Nutmeg course samples</a> · <a href="results/part2_metrics.json">parameters and checks</a></p>
