@@ -11,8 +11,9 @@
 <header><div class="shell masthead"><a class="wordmark" href="#top">FOURIER<span>HELP ME</span></a><div class="course">UNIVERSITY OF WATERLOO<span>SYDE 671 · Computational vision</span></div></div></header>
 <nav aria-label="Project sections"><div class="shell nav-inner"><a class="assignment" href="#top">ASSIGNMENT 02</a><div class="nav-links"><a href="#top">1.1 Convolution</a><a href="#part1-2">1.2 Edges</a><a href="#part1-3">1.3 DoG</a><a href="#orientations">HSV</a><a href="#part2-1">2.1 Sharpen</a><a href="#part2-2">2.2 Hybrid</a><a href="#part2-3">2.3 Stacks</a><a href="#part2-4">2.4 Blend</a></div></div></nav>
 <main class="shell" id="top">
-  <div class="hero"><div class="eyebrow"><i></i> FUN WITH FILTERS &amp; FREQUENCIES</div><h1>Convolutions from <em>scratch.</em></h1></div>
+  <div class="hero"><div class="eyebrow"><i></i> FUN WITH FILTERS &amp; FREQUENCIES</div><h1>Fourier <em>help me.</em></h1></div>
   <section id="results" class="results">
+  <div class="section-heading"><span class="number">1.1</span><h2>Convolutions from Scratch</h2></div>
   <p>pictures of grayscale, 9 × 9 box filter (dark edge created by zero padding), Dx and Dy.</p>
 
   <div class="image-grid">
@@ -24,7 +25,7 @@
   </section>
 
   <section id="comparison" class="study">
-    <div class="section-heading"><span class="number">02</span><h2>Runtime &amp; accuracy</h2></div>
+    <div class="section-heading"><h2>Runtime &amp; accuracy</h2></div>
     <div class="table-wrap"><table>
       <caption>Median of 3 runs after one warm-up; image I/O excluded. Errors are maximum absolute differences from SciPy.</caption>
       <thead><tr><th scope="col">Filter</th><th scope="col">4 loops / ms</th><th scope="col">2 loops / ms</th><th scope="col">SciPy / ms</th><th scope="col">4-loop error</th><th scope="col">2-loop error</th></tr></thead>
@@ -36,7 +37,7 @@
   </section>
 
   <section id="code" class="study">
-    <div class="section-heading"><span class="number">03</span><h2>Core implementations</h2></div>
+    <div class="section-heading"><h2>Core implementations</h2></div>
     <p>Both functions flip the kernel and use zero padding to preserve image size. The shared <code>_prepare</code> helper converts to float64, flips both axes, and pads each axis by <code>(k // 2, (k − 1) // 2)</code> using <code>np.pad(..., mode="constant", constant_values=0)</code>; see <a href="convolution.py">full source</a>.</p>
     <h3>Four loops</h3>
     <pre><code>def convolve_four_loops(image, kernel, mode=&quot;same&quot;):
