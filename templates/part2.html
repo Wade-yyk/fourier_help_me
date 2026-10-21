@@ -78,7 +78,7 @@
 
   <section id="part2-4" class="study">
     <div class="section-heading"><span class="number">2.4</span><h2>Multiresolution Blending</h2></div>
-    <p>I also build a Gaussian stack for the mask. At each level I mix <code>mask × Laplacian A + (1 − mask) × Laplacian B</code>, then add all levels back. Fine textures get a narrow transition, while low-frequency colors change more gradually.</p>
+    <p>I reuse the code implemented in 2.3.</p>
     <h3>Apple + orange · straight seam</h3>
     $oraple
     <p class="experiment-note">The mask chooses apple on the left and orange on the right. Direct splicing leaves a visible cut. The stack blend makes the color transition smoother while keeping each fruit's texture. RGB blending keeps the red and orange colors that disappear in grayscale.</p>
