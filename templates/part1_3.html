@@ -1,0 +1,46 @@
+  <section id="part1-3" class="study finite-difference">
+    <div class="section-heading"><span class="number">1.3</span><h2>Derivative of Gaussian</h2></div>
+    <p>First, use Gaussian blur with σ = $sigma so each pixel takes the surrounding pixels into account, smoothing fine texture. Then apply Dx and Dy and combine them to get the magnitude (<code>magnitude = np.sqrt(dx**2 + dy**2)</code>), which means areas with stronger changes are brighter. Since blur weakens gradients, we set the threshold to $threshold after trying different values. Notice that most of the noise from the grass has been removed this time.</p>
+    <div class="image-grid edge-grid">
+      <figure><img src="assets/images/part1_3/blurred.png" alt="Cameraman after Gaussian smoothing" width="512" height="512" loading="lazy"><figcaption>Gaussian blur</figcaption></figure>
+      <figure><img src="assets/images/part1_3/dx.png" alt="Horizontal derivative after Gaussian smoothing" width="512" height="512" loading="lazy"><figcaption>Smoothed Dx</figcaption></figure>
+      <figure><img src="assets/images/part1_3/dy.png" alt="Vertical derivative after Gaussian smoothing" width="512" height="512" loading="lazy"><figcaption>Smoothed Dy</figcaption></figure>
+      <figure><img src="assets/images/part1_3/magnitude.png" alt="Gradient magnitude after Gaussian smoothing" width="512" height="512" loading="lazy"><figcaption>Gradient magnitude</figcaption></figure>
+      <figure><img src="assets/images/part1_3/edges.png" alt="Smoothed binary edges at threshold $threshold" width="512" height="512" loading="lazy"><figcaption>Edges · T = $threshold</figcaption></figure>
+    </div>
+    <div class="image-grid filter-grid">
+      <figure><img class="kernel-image" src="assets/images/part1_3/gaussian.png" alt="Two-dimensional Gaussian kernel, bright at its center" loading="lazy"><figcaption>G</figcaption></figure>
+      <figure><img class="kernel-image" src="assets/images/part1_3/dog_x.png" alt="Horizontal derivative of Gaussian kernel with positive and negative lobes" loading="lazy"><figcaption>DoGx = G ∗ Dx</figcaption></figure>
+      <figure><img class="kernel-image" src="assets/images/part1_3/dog_y.png" alt="Vertical derivative of Gaussian kernel with positive and negative lobes" loading="lazy"><figcaption>DoGy = G ∗ Dy</figcaption></figure>
+      <figure><img src="assets/images/part1_3/dog_magnitude.png" alt="Gradient magnitude from directly applying the derivative of Gaussian filters" width="512" height="512" loading="lazy"><figcaption>Direct DoG magnitude</figcaption></figure>
+    </div>
+    <p class="threshold-note">Applying DoG directly to the image gives us the same magnitude image.</p>
+    <div class="math-proof" id="dog-proof">
+      <p>The reason is that, for the original image I, Gaussian kernel G, and gradient filter D (either Dx or Dy), the first method computes <code>(I ∗ G) ∗ D</code>, while the second computes <code>I ∗ (G ∗ D)</code>. Let B represent the image after Gaussian blur:</p>
+      <div class="math-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" alttext="B[n] = (I * G)[n] = sum_i G[i] I[n-i]">
+        <mrow><mi>B</mi><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><mo stretchy="false">(</mo><mi>I</mi><mo>∗</mo><mi>G</mi><mo stretchy="false">)</mo><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mi>G</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mi>I</mi><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mi>i</mi><mo stretchy="false">]</mo></mrow>
+      </math></div>
+      <p>Then apply D:</p>
+      <div class="math-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" alttext="Y[n] = (B * D)[n] = sum_j D[j] B[n-j]">
+        <mrow><mi>Y</mi><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><mo stretchy="false">(</mo><mi>B</mi><mo>∗</mo><mi>D</mi><mo stretchy="false">)</mo><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><mi>D</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mi>B</mi><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mi>j</mi><mo stretchy="false">]</mo></mrow>
+      </math></div>
+      <p>Substituting B gives:</p>
+      <div class="math-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" alttext="Y[n] = sum_j sum_i D[j] G[i] I[n-j-i]">
+        <mrow><mi>Y</mi><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><munder><mo>∑</mo><mi>i</mi></munder><mi>D</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mi>G</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mi>I</mi><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo stretchy="false">]</mo></mrow>
+      </math></div>
+      <p>Let k = i + j. Regrouping the terms gives:</p>
+      <div class="math-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" alttext="Y[n] = sum_k (sum_j D[j] G[k-j]) I[n-k]">
+        <mrow><mi>Y</mi><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><munder><mo>∑</mo><mi>k</mi></munder><mo stretchy="true">(</mo><munder><mo>∑</mo><mi>j</mi></munder><mi>D</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mi>G</mi><mo stretchy="false">[</mo><mi>k</mi><mo>−</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="true">)</mo><mi>I</mi><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mi>k</mi><mo stretchy="false">]</mo></mrow>
+      </math></div>
+      <p>The part inside the parentheses is <code>(G ∗ D)[k]</code>. Therefore, <code>(I ∗ G) ∗ D = I ∗ (G ∗ D)</code>, so the two methods give the same result.</p>
+    </div>
+  </section>
+  <section id="orientations" class="study finite-difference">
+    <div class="section-heading"><span class="number">+</span><h2>Gradient Orientations · HSV</h2></div>
+    <div class="image-grid orientation-grid">
+      <figure><img src="assets/images/part1_3/orientation_raw.png" alt="HSV gradient directions for the original cameraman image" width="512" height="512" loading="lazy"><figcaption>Before smoothing</figcaption></figure>
+      <figure><img src="assets/images/part1_3/orientation_smooth.png" alt="HSV gradient directions after Gaussian smoothing" width="512" height="512" loading="lazy"><figcaption>After smoothing</figcaption></figure>
+      <figure class="hue-key"><div class="hue-wheel"><span>270° · up</span><div><span>180°<br>left</span><img src="assets/images/part1_3/hue_wheel.png" alt="Cyclic hue legend for gradient directions in image coordinates" width="256" height="256" loading="lazy"><span>0°<br>right</span></div><span>90° · down</span></div><figcaption>Hue = gradient direction</figcaption></figure>
+    </div>
+    <p class="threshold-note">Without built-in angle functions, I fold the gradient into the first octant, reduce the slope to |z| ≤ √2 − 1, evaluate a 20-term alternating arctangent series, and restore the quadrant. In HSV, hue gives direction, saturation is 1, and brightness gives gradient magnitude using one shared scale. Flat regions are black; positive y points down. Smoothing removes many weak, noisy directions.</p>
+  </section>

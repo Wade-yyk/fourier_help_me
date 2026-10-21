@@ -1,0 +1,328 @@
+{
+  "sharpening": {
+    "sigma": 1.5,
+    "amounts": [
+      0.5,
+      1,
+      2
+    ],
+    "single_kernel_max_error": 1.887379141862766e-15,
+    "evaluation_blur_sigma": 2,
+    "evaluation_alpha": 2,
+    "evaluation_psnr_blurred": 27.61912282887218,
+    "evaluation_psnr_resharpened": 29.648761318520236
+  },
+  "hybrids": {
+    "derek": {
+      "sigma_low": 8,
+      "sigma_high": 4,
+      "high_gain": 1.2,
+      "low_input": "derek",
+      "high_input": "nutmeg",
+      "color": "grayscale"
+    },
+    "flower": {
+      "sigma_low": 7,
+      "sigma_high": 3,
+      "high_gain": 1.4,
+      "low_input": "orange",
+      "high_input": "flower",
+      "color": "grayscale"
+    },
+    "favorite": {
+      "low_input": "leo",
+      "high_input": "ke",
+      "sigma_low": 6,
+      "sigma_high": 3,
+      "high_gain": 1.2,
+      "color_low": true,
+      "color_high": false,
+      "half_amplitude_cutoffs_cycles_per_pixel": [
+        0.031231770854879597,
+        0.06246354170975919
+      ],
+      "fft": "log1p(abs(fftshift(fft2(grayscale)))); shared display maximum",
+      "alignment": {
+        "derek": {
+          "source": "DerekPicture.jpg",
+          "normalized_points": [
+            [
+              0.40710382513661203,
+              0.3359375
+            ],
+            [
+              0.5997267759562842,
+              0.3212890625
+            ]
+          ],
+          "normalized_targets": [
+            [
+              0.34,
+              0.38
+            ],
+            [
+              0.66,
+              0.38
+            ]
+          ],
+          "matrix": [
+            [
+              1.7234735899731422,
+              -0.18334825425246232,
+              -94.70166517457466
+            ],
+            [
+              0.18334825425246232,
+              1.7234735899731422,
+              -177.83634735899733
+            ]
+          ]
+        },
+        "nutmeg": {
+          "source": "nutmeg.jpg",
+          "normalized_points": [
+            [
+              0.43323863636363635,
+              0.26704545454545453
+            ],
+            [
+              0.5340909090909091,
+              0.34375
+            ]
+          ],
+          "normalized_targets": [
+            [
+              0.34,
+              0.38
+            ],
+            [
+              0.66,
+              0.38
+            ]
+          ],
+          "matrix": [
+            [
+              1.795496351730589,
+              1.0241915809167452,
+              -372.73992740879316
+            ],
+            [
+              -1.0241915809167452,
+              1.795496351730589,
+              188.98432478952316
+            ]
+          ]
+        },
+        "ke": {
+          "source": "portrait_far.jpg",
+          "normalized_points": [
+            [
+              0.3,
+              0.435
+            ],
+            [
+              0.66,
+              0.427
+            ]
+          ],
+          "normalized_targets": [
+            [
+              0.34,
+              0.38
+            ],
+            [
+              0.66,
+              0.38
+            ]
+          ],
+          "matrix": [
+            [
+              0.8881092045392247,
+              -0.026314346801162274,
+              34.110550956636175
+            ],
+            [
+              0.026314346801162274,
+              0.8881092045392247,
+              -54.911094786470024
+            ]
+          ]
+        },
+        "leo": {
+          "source": "leo.jpg",
+          "normalized_points": [
+            [
+              0.4426229508196721,
+              0.39263803680981596
+            ],
+            [
+              0.6530054644808743,
+              0.3946830265848671
+            ]
+          ],
+          "normalized_targets": [
+            [
+              0.34,
+              0.38
+            ],
+            [
+              0.66,
+              0.38
+            ]
+          ],
+          "matrix": [
+            [
+              1.5955750421585166,
+              0.02072175379426636,
+              -131.90173355817885
+            ],
+            [
+              -0.02072175379426636,
+              1.5955750421585166,
+              -157.07348397976403
+            ]
+          ]
+        },
+        "flower": {
+          "source": "flower.jpg",
+          "normalized_points": [
+            [
+              0.2,
+              0.45
+            ],
+            [
+              0.8,
+              0.45
+            ]
+          ],
+          "normalized_targets": [
+            [
+              0.22,
+              0.5
+            ],
+            [
+              0.78,
+              0.5
+            ]
+          ],
+          "matrix": [
+            [
+              0.9333333333333331,
+              1.2952601953960158e-17,
+              12.800000000000008
+            ],
+            [
+              -1.2952601953960158e-17,
+              0.9333333333333331,
+              -23.039999999999974
+            ]
+          ]
+        },
+        "orange": {
+          "source": "orange.jpeg",
+          "normalized_points": [
+            [
+              0.2,
+              0.5
+            ],
+            [
+              0.8,
+              0.5
+            ]
+          ],
+          "normalized_targets": [
+            [
+              0.22,
+              0.5
+            ],
+            [
+              0.78,
+              0.5
+            ]
+          ],
+          "matrix": [
+            [
+              1.1946666666666665,
+              -0.0,
+              12.800000000000011
+            ],
+            [
+              0.0,
+              1.1946666666666665,
+              12.800000000000018
+            ]
+          ]
+        }
+      },
+      "cutoff_trials": [
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          12,
+          6
+        ]
+      ]
+    }
+  },
+  "stacks_and_blending": {
+    "stack_sigmas": [
+      0,
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "level_count": 6,
+    "downsampling": false,
+    "reconstruction_max_errors": {
+      "apple": 1.1102230246251565e-16,
+      "orange": 1.1102230246251565e-16,
+      "oraple": 1.1102230246251565e-16
+    },
+    "figure342_levels": [
+      0,
+      2,
+      4
+    ],
+    "figure342_bottom_row": "sum of all weighted Laplacian levels for A, B, and blend",
+    "irregular_masks": [
+      "12-ray sun polygon with circular center",
+      "hand-defined face polygon"
+    ],
+    "favorite_blend": "My face in Leo's portrait",
+    "favorite_blend_key": "face",
+    "favorite_reconstruction_versions": [
+      "RGB",
+      "grayscale"
+    ],
+    "color": "RGB channels filtered independently with the same Gaussian mask weights"
+  },
+  "report": {
+    "sharpening": "<h3>Taj Mahal</h3><div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/sharp_taj_original.png\" alt=\"Original\" loading=\"lazy\"><figcaption>Original</figcaption></figure><figure><img src=\"assets/images/part2/sharp_taj_blur.png\" alt=\"Gaussian blur \u00b7 \u03c3 = 1.5\" loading=\"lazy\"><figcaption>Gaussian blur \u00b7 \u03c3 = 1.5</figcaption></figure><figure><img src=\"assets/images/part2/sharp_taj_high.png\" alt=\"High frequencies \u00b7 zero = gray\" loading=\"lazy\"><figcaption>High frequencies \u00b7 zero = gray</figcaption></figure><figure><img src=\"assets/images/part2/sharp_taj_0.5.png\" alt=\"Sharpened \u00b7 \u03b1 = 0.5\" loading=\"lazy\"><figcaption>Sharpened \u00b7 \u03b1 = 0.5</figcaption></figure><figure><img src=\"assets/images/part2/sharp_taj_1.png\" alt=\"Sharpened \u00b7 \u03b1 = 1\" loading=\"lazy\"><figcaption>Sharpened \u00b7 \u03b1 = 1</figcaption></figure><figure><img src=\"assets/images/part2/sharp_taj_2.png\" alt=\"Sharpened \u00b7 \u03b1 = 2\" loading=\"lazy\"><figcaption>Sharpened \u00b7 \u03b1 = 2</figcaption></figure></div><h3>My portrait</h3><div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/sharp_portrait_original.png\" alt=\"Original\" loading=\"lazy\"><figcaption>Original</figcaption></figure><figure><img src=\"assets/images/part2/sharp_portrait_blur.png\" alt=\"Gaussian blur \u00b7 \u03c3 = 1.5\" loading=\"lazy\"><figcaption>Gaussian blur \u00b7 \u03c3 = 1.5</figcaption></figure><figure><img src=\"assets/images/part2/sharp_portrait_high.png\" alt=\"High frequencies \u00b7 zero = gray\" loading=\"lazy\"><figcaption>High frequencies \u00b7 zero = gray</figcaption></figure><figure><img src=\"assets/images/part2/sharp_portrait_0.5.png\" alt=\"Sharpened \u00b7 \u03b1 = 0.5\" loading=\"lazy\"><figcaption>Sharpened \u00b7 \u03b1 = 0.5</figcaption></figure><figure><img src=\"assets/images/part2/sharp_portrait_1.png\" alt=\"Sharpened \u00b7 \u03b1 = 1\" loading=\"lazy\"><figcaption>Sharpened \u00b7 \u03b1 = 1</figcaption></figure><figure><img src=\"assets/images/part2/sharp_portrait_2.png\" alt=\"Sharpened \u00b7 \u03b1 = 2\" loading=\"lazy\"><figcaption>Sharpened \u00b7 \u03b1 = 2</figcaption></figure></div>",
+    "evaluation": "<div class=\"image-grid part2-grid cols-3\"><figure><img src=\"assets/images/part2/sharp_eval_reference.png\" alt=\"Sharp reference\" loading=\"lazy\"><figcaption>Sharp reference</figcaption></figure><figure><img src=\"assets/images/part2/sharp_eval_blur.png\" alt=\"Artificial blur \u00b7 \u03c3 = 2\" loading=\"lazy\"><figcaption>Artificial blur \u00b7 \u03c3 = 2</figcaption></figure><figure><img src=\"assets/images/part2/sharp_eval_restored.png\" alt=\"Sharpened again \u00b7 \u03b1 = 2\" loading=\"lazy\"><figcaption>Sharpened again \u00b7 \u03b1 = 2</figcaption></figure></div>",
+    "blur_psnr": "27.62",
+    "sharp_psnr": "29.65",
+    "hybrid_examples": "<h3>Derek + Nutmeg</h3><div class=\"image-grid part2-grid cols-4\"><figure><img src=\"assets/images/part2/hybrid_derek_a.png\" alt=\"Low-frequency input \u00b7 derek\" loading=\"lazy\"><figcaption>Low-frequency input \u00b7 derek</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_derek_b.png\" alt=\"High-frequency input \u00b7 nutmeg\" loading=\"lazy\"><figcaption>High-frequency input \u00b7 nutmeg</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_derek.png\" alt=\"Hybrid \u00b7 close view\" loading=\"lazy\"><figcaption>Hybrid \u00b7 close view</figcaption></figure><figure><div class=\"small-preview\"><img src=\"assets/images/part2/hybrid_derek_far.png\" alt=\"Small / far view\" loading=\"lazy\"></div><figcaption>Small / far view</figcaption></figure></div><p class=\"experiment-note\">\u03c3 low = 8, \u03c3 high = 4, high-frequency gain = 1.2. Look close for nutmeg, then step back for derek.</p><h3>Orange + my flower</h3><div class=\"image-grid part2-grid cols-4\"><figure><img src=\"assets/images/part2/hybrid_flower_a.png\" alt=\"Low-frequency input \u00b7 orange\" loading=\"lazy\"><figcaption>Low-frequency input \u00b7 orange</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_flower_b.png\" alt=\"High-frequency input \u00b7 flower\" loading=\"lazy\"><figcaption>High-frequency input \u00b7 flower</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_flower.png\" alt=\"Hybrid \u00b7 close view\" loading=\"lazy\"><figcaption>Hybrid \u00b7 close view</figcaption></figure><figure><div class=\"small-preview\"><img src=\"assets/images/part2/hybrid_flower_far.png\" alt=\"Small / far view\" loading=\"lazy\"></div><figcaption>Small / far view</figcaption></figure></div><p class=\"experiment-note\">\u03c3 low = 7, \u03c3 high = 3, high-frequency gain = 1.4. Look close for flower, then step back for orange.</p>",
+    "favorite_originals": "<div class=\"image-grid part2-grid cols-2\"><figure><img src=\"assets/images/part2/hybrid_favorite_raw_leo.png\" alt=\"Leo \u00b7 before alignment\" loading=\"lazy\"><figcaption>Leo \u00b7 before alignment</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_favorite_raw_ke.png\" alt=\"My portrait \u00b7 before alignment\" loading=\"lazy\"><figcaption>My portrait \u00b7 before alignment</figcaption></figure></div>",
+    "hybrid_pipeline": "<div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/hybrid_favorite_aligned_leo.png\" alt=\"Leo \u00b7 aligned\" loading=\"lazy\"><figcaption>Leo \u00b7 aligned</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_favorite_aligned_ke.png\" alt=\"My portrait \u00b7 aligned\" loading=\"lazy\"><figcaption>My portrait \u00b7 aligned</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_favorite_low.png\" alt=\"Low frequencies \u00b7 \u03c3 = 6\" loading=\"lazy\"><figcaption>Low frequencies \u00b7 \u03c3 = 6</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_favorite_high.png\" alt=\"High frequencies \u00b7 \u03c3 = 3\" loading=\"lazy\"><figcaption>High frequencies \u00b7 \u03c3 = 3</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_favorite.png\" alt=\"Hybrid \u00b7 color in low frequencies\" loading=\"lazy\"><figcaption>Hybrid \u00b7 color in low frequencies</figcaption></figure><figure><div class=\"small-preview\"><img src=\"assets/images/part2/hybrid_favorite_far.png\" alt=\"Small / far view\" loading=\"lazy\"></div><figcaption>Small / far view</figcaption></figure></div>",
+    "hybrid_fft": "<div class=\"image-grid part2-grid cols-5\"><figure><img src=\"assets/images/part2/fft_input_leo.png\" alt=\"FFT \u00b7 Leo\" loading=\"lazy\"><figcaption>FFT \u00b7 Leo</figcaption></figure><figure><img src=\"assets/images/part2/fft_input_ke.png\" alt=\"FFT \u00b7 my portrait\" loading=\"lazy\"><figcaption>FFT \u00b7 my portrait</figcaption></figure><figure><img src=\"assets/images/part2/fft_low.png\" alt=\"FFT \u00b7 low-pass\" loading=\"lazy\"><figcaption>FFT \u00b7 low-pass</figcaption></figure><figure><img src=\"assets/images/part2/fft_high.png\" alt=\"FFT \u00b7 high-pass\" loading=\"lazy\"><figcaption>FFT \u00b7 high-pass</figcaption></figure><figure><img src=\"assets/images/part2/fft_hybrid.png\" alt=\"FFT \u00b7 hybrid\" loading=\"lazy\"><figcaption>FFT \u00b7 hybrid</figcaption></figure></div>",
+    "hybrid_colors": "<div class=\"image-grid part2-grid cols-4\"><figure><img src=\"assets/images/part2/hybrid_color_gray.png\" alt=\"Both gray\" loading=\"lazy\"><figcaption>Both gray</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_color_low.png\" alt=\"Color in low frequencies\" loading=\"lazy\"><figcaption>Color in low frequencies</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_color_high.png\" alt=\"Color in high frequencies\" loading=\"lazy\"><figcaption>Color in high frequencies</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_color_both.png\" alt=\"Color in both\" loading=\"lazy\"><figcaption>Color in both</figcaption></figure></div>",
+    "hybrid_trials": "<div class=\"image-grid part2-grid cols-3\"><figure><img src=\"assets/images/part2/hybrid_trial_2_1.png\" alt=\"\u03c3 low = 2, \u03c3 high = 1\" loading=\"lazy\"><figcaption>\u03c3 low = 2, \u03c3 high = 1</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_trial_6_3.png\" alt=\"\u03c3 low = 6, \u03c3 high = 3\" loading=\"lazy\"><figcaption>\u03c3 low = 6, \u03c3 high = 3</figcaption></figure><figure><img src=\"assets/images/part2/hybrid_trial_12_6.png\" alt=\"\u03c3 low = 12, \u03c3 high = 6\" loading=\"lazy\"><figcaption>\u03c3 low = 12, \u03c3 high = 6</figcaption></figure></div>",
+    "oraple": "<div class=\"image-grid part2-grid cols-5\"><figure><img src=\"assets/images/part2/oraple_apple.png\" alt=\"Apple\" loading=\"lazy\"><figcaption>Apple</figcaption></figure><figure><img src=\"assets/images/part2/oraple_orange.png\" alt=\"Orange\" loading=\"lazy\"><figcaption>Orange</figcaption></figure><figure><img src=\"assets/images/part2/oraple_direct.png\" alt=\"Direct splice\" loading=\"lazy\"><figcaption>Direct splice</figcaption></figure><figure><img src=\"assets/images/part2/oraple_gray.png\" alt=\"Grayscale blend\" loading=\"lazy\"><figcaption>Grayscale blend</figcaption></figure><figure><img src=\"assets/images/part2/oraple_color.png\" alt=\"Color oraple\" loading=\"lazy\"><figcaption>Color oraple</figcaption></figure></div>",
+    "gaussian_stacks": "<div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/stack_apple_g_0.png\" alt=\"Apple \u00b7 L0\" loading=\"lazy\"><figcaption>Apple \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_g_1.png\" alt=\"Apple \u00b7 L1\" loading=\"lazy\"><figcaption>Apple \u00b7 L1</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_g_2.png\" alt=\"Apple \u00b7 L2\" loading=\"lazy\"><figcaption>Apple \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_g_3.png\" alt=\"Apple \u00b7 L3\" loading=\"lazy\"><figcaption>Apple \u00b7 L3</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_g_4.png\" alt=\"Apple \u00b7 L4\" loading=\"lazy\"><figcaption>Apple \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_g_5.png\" alt=\"Apple \u00b7 L5\" loading=\"lazy\"><figcaption>Apple \u00b7 L5</figcaption></figure></div><div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/stack_orange_g_0.png\" alt=\"Orange \u00b7 L0\" loading=\"lazy\"><figcaption>Orange \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_g_1.png\" alt=\"Orange \u00b7 L1\" loading=\"lazy\"><figcaption>Orange \u00b7 L1</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_g_2.png\" alt=\"Orange \u00b7 L2\" loading=\"lazy\"><figcaption>Orange \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_g_3.png\" alt=\"Orange \u00b7 L3\" loading=\"lazy\"><figcaption>Orange \u00b7 L3</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_g_4.png\" alt=\"Orange \u00b7 L4\" loading=\"lazy\"><figcaption>Orange \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_g_5.png\" alt=\"Orange \u00b7 L5\" loading=\"lazy\"><figcaption>Orange \u00b7 L5</figcaption></figure></div><div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/stack_oraple_g_0.png\" alt=\"Oraple \u00b7 L0\" loading=\"lazy\"><figcaption>Oraple \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_g_1.png\" alt=\"Oraple \u00b7 L1\" loading=\"lazy\"><figcaption>Oraple \u00b7 L1</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_g_2.png\" alt=\"Oraple \u00b7 L2\" loading=\"lazy\"><figcaption>Oraple \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_g_3.png\" alt=\"Oraple \u00b7 L3\" loading=\"lazy\"><figcaption>Oraple \u00b7 L3</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_g_4.png\" alt=\"Oraple \u00b7 L4\" loading=\"lazy\"><figcaption>Oraple \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_g_5.png\" alt=\"Oraple \u00b7 L5\" loading=\"lazy\"><figcaption>Oraple \u00b7 L5</figcaption></figure></div>",
+    "laplacian_stacks": "<div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/stack_apple_l_0.png\" alt=\"Apple \u00b7 L0\" loading=\"lazy\"><figcaption>Apple \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_l_1.png\" alt=\"Apple \u00b7 L1\" loading=\"lazy\"><figcaption>Apple \u00b7 L1</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_l_2.png\" alt=\"Apple \u00b7 L2\" loading=\"lazy\"><figcaption>Apple \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_l_3.png\" alt=\"Apple \u00b7 L3\" loading=\"lazy\"><figcaption>Apple \u00b7 L3</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_l_4.png\" alt=\"Apple \u00b7 L4\" loading=\"lazy\"><figcaption>Apple \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/stack_apple_l_5.png\" alt=\"Apple \u00b7 L5 residual\" loading=\"lazy\"><figcaption>Apple \u00b7 L5 residual</figcaption></figure></div><div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/stack_orange_l_0.png\" alt=\"Orange \u00b7 L0\" loading=\"lazy\"><figcaption>Orange \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_l_1.png\" alt=\"Orange \u00b7 L1\" loading=\"lazy\"><figcaption>Orange \u00b7 L1</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_l_2.png\" alt=\"Orange \u00b7 L2\" loading=\"lazy\"><figcaption>Orange \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_l_3.png\" alt=\"Orange \u00b7 L3\" loading=\"lazy\"><figcaption>Orange \u00b7 L3</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_l_4.png\" alt=\"Orange \u00b7 L4\" loading=\"lazy\"><figcaption>Orange \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/stack_orange_l_5.png\" alt=\"Orange \u00b7 L5 residual\" loading=\"lazy\"><figcaption>Orange \u00b7 L5 residual</figcaption></figure></div><div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/stack_oraple_l_0.png\" alt=\"Oraple \u00b7 L0\" loading=\"lazy\"><figcaption>Oraple \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_l_1.png\" alt=\"Oraple \u00b7 L1\" loading=\"lazy\"><figcaption>Oraple \u00b7 L1</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_l_2.png\" alt=\"Oraple \u00b7 L2\" loading=\"lazy\"><figcaption>Oraple \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_l_3.png\" alt=\"Oraple \u00b7 L3\" loading=\"lazy\"><figcaption>Oraple \u00b7 L3</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_l_4.png\" alt=\"Oraple \u00b7 L4\" loading=\"lazy\"><figcaption>Oraple \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/stack_oraple_l_5.png\" alt=\"Oraple \u00b7 L5 residual\" loading=\"lazy\"><figcaption>Oraple \u00b7 L5 residual</figcaption></figure></div>",
+    "figure342": "<div class=\"image-grid part2-grid cols-3\"><figure><img src=\"assets/images/part2/fig342_a.png\" alt=\"(a) A contribution \u00b7 L0\" loading=\"lazy\"><figcaption>(a) A contribution \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/fig342_b.png\" alt=\"(b) B contribution \u00b7 L0\" loading=\"lazy\"><figcaption>(b) B contribution \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/fig342_c.png\" alt=\"(c) Sum \u00b7 L0\" loading=\"lazy\"><figcaption>(c) Sum \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/fig342_d.png\" alt=\"(d) A contribution \u00b7 L2\" loading=\"lazy\"><figcaption>(d) A contribution \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/fig342_e.png\" alt=\"(e) B contribution \u00b7 L2\" loading=\"lazy\"><figcaption>(e) B contribution \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/fig342_f.png\" alt=\"(f) Sum \u00b7 L2\" loading=\"lazy\"><figcaption>(f) Sum \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/fig342_g.png\" alt=\"(g) A contribution \u00b7 L4\" loading=\"lazy\"><figcaption>(g) A contribution \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/fig342_h.png\" alt=\"(h) B contribution \u00b7 L4\" loading=\"lazy\"><figcaption>(h) B contribution \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/fig342_i.png\" alt=\"(i) Sum \u00b7 L4\" loading=\"lazy\"><figcaption>(i) Sum \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/fig342_j.png\" alt=\"(j) A contributions summed\" loading=\"lazy\"><figcaption>(j) A contributions summed</figcaption></figure><figure><img src=\"assets/images/part2/fig342_k.png\" alt=\"(k) B contributions summed\" loading=\"lazy\"><figcaption>(k) B contributions summed</figcaption></figure><figure><img src=\"assets/images/part2/fig342_l.png\" alt=\"(l) Reconstructed blend\" loading=\"lazy\"><figcaption>(l) Reconstructed blend</figcaption></figure></div>",
+    "custom_blends": "<h3>Flower fruit</h3><div class=\"image-grid part2-grid cols-5\"><figure><img src=\"assets/images/part2/blend_flower_a.png\" alt=\"Input A\" loading=\"lazy\"><figcaption>Input A</figcaption></figure><figure><img src=\"assets/images/part2/blend_flower_b.png\" alt=\"Input B\" loading=\"lazy\"><figcaption>Input B</figcaption></figure><figure><img src=\"assets/images/part2/blend_flower_mask.png\" alt=\"Sun-shaped mask \u00b7 white selects A\" loading=\"lazy\"><figcaption>Sun-shaped mask \u00b7 white selects A</figcaption></figure><figure><img src=\"assets/images/part2/blend_flower_direct.png\" alt=\"Direct paste\" loading=\"lazy\"><figcaption>Direct paste</figcaption></figure><figure><img src=\"assets/images/part2/blend_flower.png\" alt=\"Multiresolution blend\" loading=\"lazy\"><figcaption>Multiresolution blend</figcaption></figure></div><h3>My face in Leo's portrait</h3><div class=\"image-grid part2-grid cols-5\"><figure><img src=\"assets/images/part2/blend_face_a.png\" alt=\"Input A\" loading=\"lazy\"><figcaption>Input A</figcaption></figure><figure><img src=\"assets/images/part2/blend_face_b.png\" alt=\"Input B\" loading=\"lazy\"><figcaption>Input B</figcaption></figure><figure><img src=\"assets/images/part2/blend_face_mask.png\" alt=\"Face-shaped mask \u00b7 white selects A\" loading=\"lazy\"><figcaption>Face-shaped mask \u00b7 white selects A</figcaption></figure><figure><img src=\"assets/images/part2/blend_face_direct.png\" alt=\"Direct paste\" loading=\"lazy\"><figcaption>Direct paste</figcaption></figure><figure><img src=\"assets/images/part2/blend_face.png\" alt=\"Multiresolution blend\" loading=\"lazy\"><figcaption>Multiresolution blend</figcaption></figure></div>",
+    "favorite_process": "<div class=\"image-grid part2-grid cols-3\"><figure><img src=\"assets/images/part2/blend_process_a.png\" alt=\"(a) My portrait contribution \u00b7 L0\" loading=\"lazy\"><figcaption>(a) My portrait contribution \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_b.png\" alt=\"(b) Leo contribution \u00b7 L0\" loading=\"lazy\"><figcaption>(b) Leo contribution \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_c.png\" alt=\"(c) Sum \u00b7 L0\" loading=\"lazy\"><figcaption>(c) Sum \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_d.png\" alt=\"(d) My portrait contribution \u00b7 L2\" loading=\"lazy\"><figcaption>(d) My portrait contribution \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_e.png\" alt=\"(e) Leo contribution \u00b7 L2\" loading=\"lazy\"><figcaption>(e) Leo contribution \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_f.png\" alt=\"(f) Sum \u00b7 L2\" loading=\"lazy\"><figcaption>(f) Sum \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_g.png\" alt=\"(g) My portrait contribution \u00b7 L4\" loading=\"lazy\"><figcaption>(g) My portrait contribution \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_h.png\" alt=\"(h) Leo contribution \u00b7 L4\" loading=\"lazy\"><figcaption>(h) Leo contribution \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_i.png\" alt=\"(i) Sum \u00b7 L4\" loading=\"lazy\"><figcaption>(i) Sum \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_j.png\" alt=\"(j) My portrait contributions summed\" loading=\"lazy\"><figcaption>(j) My portrait contributions summed</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_k.png\" alt=\"(k) Leo contributions summed\" loading=\"lazy\"><figcaption>(k) Leo contributions summed</figcaption></figure><figure><img src=\"assets/images/part2/blend_process_l.png\" alt=\"(l) Reconstructed blend\" loading=\"lazy\"><figcaption>(l) Reconstructed blend</figcaption></figure></div>",
+    "mask_stack": "<div class=\"image-grid part2-grid cols-6\"><figure><img src=\"assets/images/part2/stack_face_mask_0.png\" alt=\"Face mask \u00b7 L0\" loading=\"lazy\"><figcaption>Face mask \u00b7 L0</figcaption></figure><figure><img src=\"assets/images/part2/stack_face_mask_1.png\" alt=\"Face mask \u00b7 L1\" loading=\"lazy\"><figcaption>Face mask \u00b7 L1</figcaption></figure><figure><img src=\"assets/images/part2/stack_face_mask_2.png\" alt=\"Face mask \u00b7 L2\" loading=\"lazy\"><figcaption>Face mask \u00b7 L2</figcaption></figure><figure><img src=\"assets/images/part2/stack_face_mask_3.png\" alt=\"Face mask \u00b7 L3\" loading=\"lazy\"><figcaption>Face mask \u00b7 L3</figcaption></figure><figure><img src=\"assets/images/part2/stack_face_mask_4.png\" alt=\"Face mask \u00b7 L4\" loading=\"lazy\"><figcaption>Face mask \u00b7 L4</figcaption></figure><figure><img src=\"assets/images/part2/stack_face_mask_5.png\" alt=\"Face mask \u00b7 L5\" loading=\"lazy\"><figcaption>Face mask \u00b7 L5</figcaption></figure></div>",
+    "favorite_gray": "<div class=\"image-grid part2-grid cols-3\"><figure><img src=\"assets/images/part2/blend_face_gray.png\" alt=\"Reconstructed blend \u00b7 grayscale\" loading=\"lazy\"><figcaption>Reconstructed blend \u00b7 grayscale</figcaption></figure></div>"
+  },
+  "display": "clip to [0,1] only when exporting PNG; signed bands use gray as zero"
+}

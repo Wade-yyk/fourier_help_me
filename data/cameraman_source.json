@@ -1,0 +1,11 @@
+{
+  "file": "cameraman.png",
+  "source": "https://github.com/scikit-image/scikit-image/blob/v0.17.2/skimage/data/camera.png",
+  "download_url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.17.2/skimage/data/camera.png",
+  "assignment_reference": "https://www.researchgate.net/figure/The-cameraman-picture-with-256-256-size_fig3_329563816",
+  "width": 512,
+  "height": 512,
+  "mode": "L",
+  "sha256": "361a6d56d22ee52289cd308d5461d090e06a56cb36007d8dfc3226cbe8aaa5db",
+  "note": "Classic cameraman image from the historical scikit-image sample data. The assignment reference labels its figure 256 by 256; this downloaded copy is 512 by 512."
+}

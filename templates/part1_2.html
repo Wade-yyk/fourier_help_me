@@ -1,0 +1,12 @@
+  <section id="part1-2" class="study finite-difference">
+    <div class="section-heading"><span class="number">1.2</span><h2>Finite Difference Operator</h2></div>
+    <p>I convolved the cameraman image with <code>Dx = [1, 0, -1]</code> and its column form <code>Dy</code>, then computed <code>magnitude = sqrt(dx² + dy²)</code> and <code>edges = magnitude &gt; $threshold</code>. Symmetric padding avoids artificial responses at the image border.</p>
+    <div class="image-grid edge-grid">
+      <figure><img src="assets/images/part1_2/original.png" alt="Original grayscale cameraman image" width="$width" height="$height" loading="lazy"><figcaption>Cameraman <a class="source-link" href="data/cameraman_source.json">source</a></figcaption></figure>
+      <figure><img src="assets/images/part1_2/dx.png" alt="Signed horizontal finite difference of cameraman" width="$width" height="$height" loading="lazy"><figcaption>Dx</figcaption></figure>
+      <figure><img src="assets/images/part1_2/dy.png" alt="Signed vertical finite difference of cameraman" width="$width" height="$height" loading="lazy"><figcaption>Dy</figcaption></figure>
+      <figure><img src="assets/images/part1_2/magnitude.png" alt="Gradient magnitude computed from Dx and Dy" width="$width" height="$height" loading="lazy"><figcaption>Gradient magnitude</figcaption></figure>
+      <figure><img src="assets/images/part1_2/edges.png" alt="Binary cameraman edges with threshold $threshold" width="$width" height="$height" loading="lazy"><figcaption>Edges · T = $threshold</figcaption></figure>
+    </div>
+    <p class="threshold-note">I tried thresholds $low_threshold, $threshold, and $high_threshold on the unscaled magnitude of the [0, 1] image. I chose $threshold: $low_threshold retains too much grass texture, while $high_threshold removes weaker parts of the camera and tripod contours. Dx and Dy share a signed display scale with gray at zero; the magnitude is scaled only for display.</p>
+  </section>

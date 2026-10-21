@@ -1,0 +1,54 @@
+{
+  "input": "data/cameraman.png",
+  "shape_hw": [
+    512,
+    512
+  ],
+  "dtype": "float64",
+  "input_range": [
+    0,
+    1
+  ],
+  "dx_kernel": [
+    [
+      1,
+      0,
+      -1
+    ]
+  ],
+  "dy_kernel": [
+    [
+      1
+    ],
+    [
+      0
+    ],
+    [
+      -1
+    ]
+  ],
+  "mode": "same",
+  "boundary": "symm",
+  "threshold": 0.2,
+  "threshold_applied_to": "unscaled gradient magnitude",
+  "edge_fraction": 0.060699462890625,
+  "threshold_trials": [
+    {
+      "threshold": 0.08,
+      "edge_fraction": 0.16805648803710938,
+      "file": "threshold_0.08.png"
+    },
+    {
+      "threshold": 0.2,
+      "edge_fraction": 0.060699462890625,
+      "file": "threshold_0.2.png"
+    },
+    {
+      "threshold": 0.3,
+      "edge_fraction": 0.032833099365234375,
+      "file": "threshold_0.3.png"
+    }
+  ],
+  "signed_display_limit": 0.3529411764705882,
+  "magnitude_display_max": 0.8510526760662035
+}

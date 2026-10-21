@@ -1,0 +1,103 @@
+  <div class="part-heading" id="part2"><div class="eyebrow"><i></i> PART TWO · FUN WITH FREQUENCIES</div><h2>Mix the <em>frequencies.</em></h2></div>
+  <section id="part2-1" class="study">
+    <div class="section-heading"><span class="number">2.1</span><h2>Image Sharpening</h2></div>
+    <p>I subtract the blurred image from the original to get high frequencies, then add them back: <code>sharp = image + α × (image − blur)</code>. Then we define δ such that <code>image ∗ δ = image</code>, which gives <code>sharp = image ∗ ((1 + α)δ − αG)</code>. The single convolution filter is <code>(1 + α)δ − αG</code>. Below are illustrations of two images.</p>
+    $sharpening
+    <p class="experiment-note">Bigger α makes edges stronger, but α = 2 also makes hair and small details look rougher. Sharpening increases existing details; it does not create missing information.</p>
+    <h3>Blur a sharp image, then sharpen it again</h3>
+    $evaluation
+    <p class="experiment-note">The sharpened flower looks clearer than the blurred one, but the fine veins are still softer than the original. PSNR (Peak Signal-to-Noise Ratio) changes from $blur_psnr dB to $sharp_psnr dB after sharpening. A higher PSNR means a smaller pixel error relative to the original.</p>
+  </section>
+
+  <section id="part2-2" class="study">
+    <div class="section-heading"><span class="number">2.2</span><h2>Hybrid Images</h2></div>
+    <p>I use the method described by <a href="#ref-oliva-2006">Oliva et al. (SIGGRAPH 2006) [1]</a>:</p>
+    <div class="math-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" alttext="Hybrid = A * G_sigma_L + w (B - B * G_sigma_H)">
+      <mrow><mtext>Hybrid</mtext><mo>=</mo><mi>A</mi><mo>∗</mo><msub><mi>G</mi><msub><mi>σ</mi><mi>L</mi></msub></msub><mo>+</mo><mi>w</mi><mo stretchy="false">(</mo><mi>B</mi><mo>−</mo><mi>B</mi><mo>∗</mo><msub><mi>G</mi><msub><mi>σ</mi><mi>H</mi></msub></msub><mo stretchy="false">)</mo></mrow>
+    </math></div>
+    <p>I first align the two images, focusing on the eyes for portraits and the centers for the flower and orange. The close view shows the high-frequency image, while the far view shows the low-frequency image.</p>
+    $hybrid_examples
+    <h3>Leo + my portrait · full process <a href="#ref-leo-photo">[2]</a></h3>
+    $favorite_originals
+    $hybrid_pipeline
+    <p class="experiment-note">I align the two eye centers with a similarity transform. My face is more visible close up, while Leo is more visible in the small view. I chose σ low = 6 and σ high = 3: smaller values keep too much of Leo's detail, while larger values make my face's lines too broad. Their approximate half-amplitude cutoffs are 0.031 and 0.062 cycles/pixel. The high-frequency gain is 1.2.</p>
+    <p class="experiment-note" id="hybrid-failure"><strong>Failure case.</strong> This pair only partly works, especially on the left side of the image. Leo's low-frequency shadow and face shape do not match my cheek and hairline, leaving visible ghosting. Aligning the eyes cannot fully match the face shapes or lighting, so changing σ alone does not solve the problem.</p>
+    <h3 id="hybrid-size">Change the viewing size</h3>
+    <p class="experiment-note" id="hybrid-size-help">Move each slider to see when the subject changes. At a fixed viewing distance, a smaller image approximates a farther view.</p>
+    <div class="hybrid-viewers">
+      <figure class="hybrid-viewer" data-hybrid-viewer>
+        <figcaption><span>Derek + Nutmeg</span><output for="hybrid-derek-size">256 px</output></figcaption>
+        <div class="hybrid-stage"><img src="assets/images/part2/hybrid_derek.png" alt="Derek and Nutmeg hybrid at an adjustable viewing size" width="384" height="384" loading="lazy"></div>
+        <div class="hybrid-size-control"><input id="hybrid-derek-size" type="range" min="24" max="384" step="1" value="256" aria-label="Image size for Derek and Nutmeg" aria-describedby="hybrid-size-help"><div class="hybrid-size-labels"><span>Smaller · far</span><span>Larger · near</span></div></div>
+      </figure>
+      <figure class="hybrid-viewer" data-hybrid-viewer>
+        <figcaption><span>Orange + my flower</span><output for="hybrid-flower-size">256 px</output></figcaption>
+        <div class="hybrid-stage"><img src="assets/images/part2/hybrid_flower.png" alt="Orange and flower hybrid at an adjustable viewing size" width="384" height="384" loading="lazy"></div>
+        <div class="hybrid-size-control"><input id="hybrid-flower-size" type="range" min="24" max="384" step="1" value="256" aria-label="Image size for orange and flower" aria-describedby="hybrid-size-help"><div class="hybrid-size-labels"><span>Smaller · far</span><span>Larger · near</span></div></div>
+      </figure>
+      <figure class="hybrid-viewer" data-hybrid-viewer>
+        <figcaption><span>Leo + my portrait</span><output for="hybrid-portrait-size">256 px</output></figcaption>
+        <div class="hybrid-stage"><img src="assets/images/part2/hybrid_favorite.png" alt="Leo and my portrait hybrid at an adjustable viewing size" width="384" height="384" loading="lazy"></div>
+        <div class="hybrid-size-control"><input id="hybrid-portrait-size" type="range" min="24" max="384" step="1" value="256" aria-label="Image size for Leo and my portrait" aria-describedby="hybrid-size-help"><div class="hybrid-size-labels"><span>Smaller · far</span><span>Larger · near</span></div></div>
+      </figure>
+    </div>
+    <details open><summary>Cutoff comparison</summary>$hybrid_trials</details>
+    <details open><summary>Fourier analysis · inputs, filtered images, and hybrid</summary>
+      <p class="experiment-note">I use <code>log(1 + |fftshift(fft2(gray))|)</code> with one display scale. Low-pass energy stays near the center; high-pass removes much of the central energy; the hybrid keeps both.</p>
+      $hybrid_fft
+    </details>
+    <h3>Color experiment</h3>
+    $hybrid_colors
+    <p class="experiment-note">Using color in the low frequencies and grayscale in the high frequencies works better here and helps the close and far views behave as expected.</p>
+  </section>
+
+  <section id="part2-3" class="study">
+    <div class="section-heading"><span class="number">2.3</span><h2>Gaussian &amp; Laplacian Stacks</h2></div>
+    <p>I build six Gaussian levels with σ = 0, 2, 4, 8, 16, 32, without making the image smaller. Each Laplacian level is the difference between neighboring Gaussian levels; the last level keeps the remaining low frequencies. Adding all Laplacian levels reconstructs the image.</p>
+    <p>For the Laplacian stack, we look for the differences between adjacent blurred versions. Once we have the Gaussian levels, we can calculate <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="L_n = G_n - G_(n+1)"><mrow><msub><mi>L</mi><mi>n</mi></msub><mo>=</mo><msub><mi>G</mi><mi>n</mi></msub><mo>−</mo><msub><mi>G</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></math>. Finally, we keep <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="L_5 = G_5"><mrow><msub><mi>L</mi><mn>5</mn></msub><mo>=</mo><msub><mi>G</mi><mn>5</mn></msub></mrow></math> as the residual so we can recover the image by adding all the layers:</p>
+    <div class="math-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" alttext="sum_(i=0)^5 L_i = (G_0 - G_1) + (G_1 - G_2) + ... + (G_4 - G_5) + G_5 = G_0 = I">
+      <mtable columnalign="right left" columnspacing="0.4em" rowspacing="0.35em">
+        <mtr><mtd><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mn>5</mn></munderover><msub><mi>L</mi><mi>i</mi></msub></mrow></mtd><mtd><mrow><mo>=</mo><mo stretchy="false">(</mo><msub><mi>G</mi><mn>0</mn></msub><mo>−</mo><msub><mi>G</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><msub><mi>G</mi><mn>1</mn></msub><mo>−</mo><msub><mi>G</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo>+</mo><mo>⋯</mo><mo>+</mo><mo stretchy="false">(</mo><msub><mi>G</mi><mn>4</mn></msub><mo>−</mo><msub><mi>G</mi><mn>5</mn></msub><mo stretchy="false">)</mo><mo>+</mo><msub><mi>G</mi><mn>5</mn></msub></mrow></mtd></mtr>
+        <mtr><mtd></mtd><mtd><mrow><mo>=</mo><msub><mi>G</mi><mn>0</mn></msub></mrow></mtd></mtr>
+        <mtr><mtd></mtd><mtd><mrow><mo>=</mo><mi>I</mi></mrow></mtd></mtr>
+      </mtable>
+    </math></div>
+    <div class="image-grid part2-grid cols-3">
+      <figure><img src="assets/images/part2/stack_apple_g_3.png" alt="Apple Gaussian stack at sigma 8" loading="lazy"><figcaption>Gaussian · σ = 8</figcaption></figure>
+      <figure><img src="assets/images/part2/stack_apple_l_2.png" alt="Apple Laplacian band at level 2" loading="lazy"><figcaption>Laplacian · level 2</figcaption></figure>
+      <figure><img src="assets/images/part2/oraple_color.png" alt="Reconstructed color oraple from blended Laplacian bands" loading="lazy"><figcaption>Reconstructed oraple</figcaption></figure>
+    </div>
+    <details open><summary>All Gaussian levels · apple, orange, and oraple</summary>$gaussian_stacks</details>
+    <details open><summary>All Laplacian levels · apple, orange, and oraple</summary>
+      <p class="experiment-note">Gray is zero. Each detail band is contrast-stretched for display; the final residual keeps its normal colors.</p>$laplacian_stacks
+    </details>
+    <details class="figure342" open><summary>Recreated Figure 3.42 · (a) through (l)</summary>
+      <p class="experiment-note">Rows 1–3 show levels 0, 2, and 4. Columns show the masked apple contribution, masked orange contribution, and their sum. The last row adds every level back. Each signed row shares one display scale.</p>$figure342
+    </details>
+  </section>
+
+  <section id="part2-4" class="study">
+    <div class="section-heading"><span class="number">2.4</span><h2>Multiresolution Blending</h2></div>
+    <p>I also build a Gaussian stack for the mask. At each level I mix <code>mask × Laplacian A + (1 − mask) × Laplacian B</code>, then add all levels back. Fine textures get a narrow transition, while low-frequency colors change more gradually.</p>
+    <h3>Apple + orange · straight seam</h3>
+    $oraple
+    <p class="experiment-note">The mask chooses apple on the left and orange on the right. Direct splicing leaves a visible cut. The stack blend makes the color transition smoother while keeping each fruit's texture. RGB blending keeps the red and orange colors that disappear in grayscale.</p>
+    $custom_blends
+    <p class="experiment-note">I used my flower photo with the orange image and a cartoon sun-shaped mask, then my portrait with Leo's picture and a face-shaped mask.</p>
+    <details open><summary>My favorite blend · My face in Leo's portrait</summary>
+      $mask_stack
+      <p class="experiment-note">For my face in Leo's portrait, the first three rows show masked Laplacian bands at levels 0, 2, and 4. Columns show my portrait's contribution, Leo's contribution, and their sum. The last row adds all six levels back, like the blending process in Burt and Adelson's Figure 10.</p>$favorite_process
+      $favorite_gray
+      <p class="experiment-note"><strong>Limitation.</strong> The hairline and skin color still cause some strange effects, but at least grayscale removes some of the color mismatch. Still, it looks relatively more natural than the hybrid images in 2.2.</p>
+    </details>
+  </section>
+  <section class="takeaway">
+    <div class="eyebrow">WHAT I LEARNED</div>
+    <p>To blur or not to blur, that is the question - Ke Yang</p>
+  </section>
+  <p class="asset-credit">Sources: <a href="data/part2/sources.json">input images</a> · <a href="https://cal-cs180.github.io/fa24/hw/proj2/index.html">Berkeley course materials</a> · <a href="https://courses.grainger.illinois.edu/cs445/fa2023/projects/hybrid/ComputationalPhotography_ProjectHybrid.html">Derek/Nutmeg course samples</a> · <a href="results/part2_metrics.json">parameters and checks</a></p>
+  <section id="references" class="study">
+    <h2>References</h2>
+    <p class="experiment-note" id="ref-oliva-2006">[1] Oliva, A., Torralba, A., &amp; Schyns, P. G. (2006). <em>Hybrid images.</em> ACM Transactions on Graphics, 25(3), 527–532 (SIGGRAPH 2006). <a href="https://doi.org/10.1145/1141911.1141919">DOI</a> · <a href="https://web.stanford.edu/class/ee367/reading/OlivaTorralb_Hybrid_Siggraph06.pdf">PDF</a>.</p>
+    <p class="experiment-note" id="ref-leo-photo">[2] Jaud (Falkenauge). (2000). <a href="https://commons.wikimedia.org/wiki/File:Leonardo_DiCaprio.jpeg"><em>Leonardo DiCaprio.jpeg.</em></a> Wikimedia Commons. <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. The source photo was cropped and adjusted on Wikimedia Commons. Alignment, filtering, hybridization, multiresolution blending, and grayscale conversion by Ke Yang. Image adaptations incorporating this photograph in Parts 2.2 and 2.4 are shared under CC BY-SA 3.0. These are coursework composites; no endorsement is implied.</p>
+  </section>

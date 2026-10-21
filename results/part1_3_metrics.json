@@ -1,0 +1,49 @@
+{
+  "input": "data/cameraman.png",
+  "shape_hw": [
+    512,
+    512
+  ],
+  "gaussian_size": 13,
+  "sigma": 1.5,
+  "opencv": "5.0.0",
+  "gaussian_sum": 1.0000000000000004,
+  "dog_x_shape": [
+    13,
+    15
+  ],
+  "dog_y_shape": [
+    15,
+    13
+  ],
+  "threshold": 0.12,
+  "part1_2_threshold": 0.2,
+  "edge_fraction": 0.07086944580078125,
+  "threshold_trials": [
+    {
+      "threshold": 0.05,
+      "edge_fraction": 0.154083251953125
+    },
+    {
+      "threshold": 0.08,
+      "edge_fraction": 0.102294921875
+    },
+    {
+      "threshold": 0.12,
+      "edge_fraction": 0.07086944580078125
+    }
+  ],
+  "max_absolute_error": 1.0682101904413432e-15,
+  "comparison_region": "entire image including borders",
+  "boundary": "one symmetric extension by Gaussian radius plus derivative radius; crop after filtering",
+  "derivative_display_limit": 0.3529411764705882,
+  "magnitude_display_max": 0.8510526760662035,
+  "orientation": {
+    "method": "octant folding, range reduction, 20-term alternating series, quadrant restoration",
+    "range": "[0, 2*pi)",
+    "hsv": "H=degrees(theta), S=1, V=clip(magnitude/shared_limit,0,1)",
+    "shared_value_limit": 0.46364153781376505,
+    "positive_y": "down in image coordinates",
+    "zero_gradient": "theta=0, V=0 (black)"
+  }
+}

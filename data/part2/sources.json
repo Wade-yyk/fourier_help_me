@@ -1,0 +1,66 @@
+[
+  {
+    "file": "taj.jpg",
+    "source": "https://cal-cs180.github.io/fa24/hw/proj2/files/taj.jpg",
+    "sha256": "4c25d1a1b80c7e17b9432e8cc4ec3ea315d7a105aee695041334444160c32a5a"
+  },
+  {
+    "file": "apple.jpeg",
+    "source": "https://cal-cs180.github.io/fa24/hw/proj2/spline.zip",
+    "archive_member": "apple.jpeg",
+    "sha256": "f1d9903db9c71d52e30b63533dc82ca81b217551acd35791c0c524d66cc02e06"
+  },
+  {
+    "file": "orange.jpeg",
+    "source": "https://cal-cs180.github.io/fa24/hw/proj2/spline.zip",
+    "archive_member": "orange.jpeg",
+    "sha256": "1f8f8609b82ac59119b0498c21d0bc36ffff6d45aa067ab98e30091c495455e7"
+  },
+  {
+    "file": "DerekPicture.jpg",
+    "source": "https://courses.grainger.illinois.edu/cs445/fa2023/projects/hybrid/hybrid.zip",
+    "archive_member": "hybrid/DerekPicture.jpg",
+    "sha256": "8c3622e450b104cd7c292a6fbc048d12aa96cacc8a645cd87994bd37419077f6"
+  },
+  {
+    "file": "nutmeg.jpg",
+    "source": "https://courses.grainger.illinois.edu/cs445/fa2023/projects/hybrid/hybrid.zip",
+    "archive_member": "hybrid/nutmeg.jpg",
+    "sha256": "0ab7d1bef5d9bd03eb6d3ac2ae2b827272e6cb96e3e461214bc9d25c26ac91d9"
+  },
+  {
+    "file": "leo.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Leonardo_DiCaprio.jpeg",
+    "original_asset": "assets/4.0_abstract.jpg",
+    "sha256": "531cae456b695032bc00e7cea92ca80ee5051e19afe2637d1b34adc355bfa520",
+    "user_provided_source": "https://en.wikipedia.org/wiki/File:Leonardo_DiCaprio.jpeg",
+    "author": "Jaud (Falkenauge)",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "attribution": "Jaud (Falkenauge), via Wikimedia Commons",
+    "source_edits": "Cropped and adjusted on Wikimedia Commons",
+    "adaptations": "Alignment, filtering, hybridization, multiresolution blending, and grayscale conversion by Ke Yang; image adaptations incorporating this photograph are shared under CC BY-SA 3.0"
+  },
+  {
+    "file": "flower.jpg",
+    "source": "User photograph from the photos project",
+    "original_asset": "assets/img_8595.jpg",
+    "sha256": "7d93f8d7ea48c856e22752b08839e89e3a9f52c26e04e74aa791bb87470fbfe5"
+  },
+  {
+    "file": "portrait_far.jpg",
+    "source": "User portrait from the photos project",
+    "original_asset": "assets/4.0_100cm_100mm.jpg",
+    "sha256": "039688b76e5e5b7e6fd4efdb5b4eb3b0266eedd896ac0853b11f97906b5a5ad2"
+  },
+  {
+    "file": "portrait_close.jpg",
+    "source": "User portrait from the photos project",
+    "original_asset": "assets/0.5_10cm_14mm.jpg",
+    "sha256": "8caf634f21ed5e5c4a7a098341d9b304c7b6f69ea093a6c5ad412110dcef1a23"
+  },
+  {
+    "file": "../../mypic/2b81a35166f5ac3836f246ce1fa9601b.jpg",
+    "source": "User portrait supplied in this repository; used for the second sharpening example"
+  }
+]
